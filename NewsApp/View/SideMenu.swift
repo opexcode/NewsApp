@@ -64,10 +64,9 @@ struct SideMenu: View {
 			}
 			.listStyle(GroupedListStyle())
 			.background(menuColor)
+			.edgesIgnoringSafeArea(.all)
 			
-			//            .listRowInsets(EdgeInsets(top: 0, leading: 55, bottom: 0, trailing: 18))
-			
-		}.frame(height: nil)
+		}
 		
 	}
 	

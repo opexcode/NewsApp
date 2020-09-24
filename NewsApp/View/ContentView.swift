@@ -116,11 +116,12 @@ struct ContentView: View {
 				}
 				
 				NewsDatePicker()
-					.offset(y: self.showPicker ? 180 : geometry.size.height)
+					.offset(y: self.showPicker ? (geometry.size.height / 3) : geometry.size.height)
+					.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: geometry.size.height / 3)
 				
 				// Боковое меню
 				SideMenu()
-					.offset(x: self.showMenu ? -65 : -geometry.size.width)
+					.offset(x: self.showMenu ? -70 : -geometry.size.width)
 					.frame(width: geometry.size.width * 0.66) //, height: geometry.size.height + 100)
 				
 			}
