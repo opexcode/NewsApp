@@ -6,9 +6,9 @@
 //  Copyright © 2020 Alexey Orekhov. All rights reserved.
 //
 import Foundation
-import SwiftUI
+//import SwiftUI
 
-struct NewsResponse: Hashable, Decodable {
+class NewsResponse: Decodable {
     var content: [Content]
     var date: String
     var next_date: String
@@ -16,7 +16,7 @@ struct NewsResponse: Hashable, Decodable {
     var request: [String]
 }
 
-struct Content: Hashable, Codable, Identifiable {
+struct Content: Decodable, Identifiable {
     var id: String
     var date: String
     var time: String
@@ -31,7 +31,7 @@ struct Content: Hashable, Codable, Identifiable {
     var tags: [Tags]
 }
 
-struct Tags: Hashable, Codable {
+struct Tags: Decodable {
     var path: String
     var name: String
 }

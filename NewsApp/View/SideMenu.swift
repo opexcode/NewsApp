@@ -12,7 +12,6 @@ struct SideMenu: View {
 	
 	let menuColor = Color(red: 255/255, green: 111/255, blue: 64/255)
 	@State var newsMark = false
-	@State var marketMark = false
 	
 	init(){
 		UITableView.appearance().backgroundColor = .clear

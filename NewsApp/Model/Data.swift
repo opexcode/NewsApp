@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-
+// Подгружаем картинки
 class ImageLoader: ObservableObject {
     
     @Published var image: UIImage?
@@ -36,47 +36,76 @@ class ImageLoader: ObservableObject {
     func cancel() {
         cancellable?.cancel()
     }
-	
+    
 }
 
-
-
-class DataManager: ObservableObject {
-	@Published var dataModel: [Content]
-	
-	init(dataModel: [Content]) {
-		self.dataModel = dataModel
-	}
-	
-}
-
-var newsResponse: NewsResponse = load()
-var content: [Content] = newsResponse.content
-
-
-func load<T: Decodable>(as type: T.Type = T.self) -> T {
-	var mydata = Data()
-	
-	do {
-		let url = URL(string: "https://api.sakh.com/android/ghsJKds78dfsdg/news/list") // guard
-		var request = URLRequest(url: url!)
-		request.setValue("iOSApp", forHTTPHeaderField: "User-Agent")
-		request.setValue("guid=FEDF4350-0F26-4024-BBB7-BFD63B689031(iPhone)", forHTTPHeaderField: "Cookie")
-		request.setValue("4509f15b1de09f48dc46cd0ae57ca52d6e4ff5eb1be7c371b44cbed3d29010e4709404e4d5e28c0b", forHTTPHeaderField: "token")
-		request.setValue("3.5.8", forHTTPHeaderField: "version")
-		request.setValue("62", forHTTPHeaderField: "build")
-		request.setValue("true", forHTTPHeaderField: "dev")
-		
-		URLSession.shared.dataTask(with: request) { data, response, error in
-			guard let data = data else { return }
-			mydata = data
-		}.resume()
-		
-		sleep(3)
+// Получаем данные JSON c API
+class NewsContent: ObservableObject {
+    @Published var newsResponse: NewsResponse?
+    
+    init() {
+        load()
+    }
+    
+    func load() {
+        guard let url = URL(string: "https://api.sakh.com/android/ghsJKds78dfsdg/news/list") else { return }
+        var request = URLRequest(url: url)
+        request.setValue("iOSApp", forHTTPHeaderField: "User-Agent")
+        request.setValue("guid=FEDF4350-0F26-4024-BBB7-BFD63B689031(iPhone)", forHTTPHeaderField: "Cookie")
+        request.setValue("4509f15b1de09f48dc46cd0ae57ca52d6e4ff5eb1be7c371b44cbed3d29010e4709404e4d5e28c0b", forHTTPHeaderField: "token")
+        request.setValue("3.5.8", forHTTPHeaderField: "version")
+        request.setValue("62", forHTTPHeaderField: "build")
+        request.setValue("true", forHTTPHeaderField: "dev")
         
-		return try JSONDecoder().decode(T.self, from: mydata)
-	} catch {
-		fatalError("Couldn't parse as \(T.self):\n\(error)")
-	}
-	
+        URLSession.shared.dataTask(with: request) { [self] data, _, _ in
+            guard let data = data else { return }
+            let decodedJSON = try! JSONDecoder().decode(NewsResponse.self, from: data)
+            DispatchQueue.main.async {
+				self.newsResponse = decodedJSON
+            }
+        }.resume()
+    }
+}
+
+
+// Под вопросом
+class ImgLoader: ObservableObject {
+    
+    @Published var downloadedImage: UIImage?
+    
+    init(url: String) {
+        guard let imageURL = URL(string: url) else {
+            fatalError("ImageURL is not correct!")
+        }
+        
+        URLSession.shared.dataTask(with: imageURL) { data, response, error in
+            guard let data = data, error == nil else { return }
+            
+            DispatchQueue.main.async {
+                self.downloadedImage = UIImage(data: data)
+            }
+        }.resume()
+    }
+    
+    func getImage(url: String) -> Image {
+        var imgData = Data()
+        
+        if let parsedURL = URL(string: url) {
+            URLSession.shared.dataTask(with: parsedURL) { data, _, _ in
+                if let data = data {
+                    DispatchQueue.main.async {
+                        imgData = data
+                    }
+                }
+            }.resume()
+            
+            
+        }
+        
+        if let image = UIImage(data: imgData) {
+            return Image(uiImage: image)
+        } else {
+            return Image(systemName: "photo")
+        }
+    }
 }

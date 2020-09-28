@@ -14,11 +14,13 @@
 		FA7F3F49251C580C00B18A8C /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F3F43251C580C00B18A8C /* AsyncImage.swift */; };
 		FA7F3F4A251C580C00B18A8C /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F3F44251C580C00B18A8C /* NewsCell.swift */; };
 		FA7F3F4C251C580C00B18A8C /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F3F46251C580C00B18A8C /* SideMenu.swift */; };
-		FA7F3F4D251C580C00B18A8C /* NewDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F3F47251C580C00B18A8C /* NewDatePicker.swift */; };
+		FA7F3F4D251C580C00B18A8C /* NewsDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F3F47251C580C00B18A8C /* NewsDatePicker.swift */; };
 		FA7F3F51251C581A00B18A8C /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F3F4F251C581900B18A8C /* Data.swift */; };
 		FA7F3F52251C581A00B18A8C /* NewsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F3F50251C581A00B18A8C /* NewsResponse.swift */; };
 		FA7F3F56251C586A00B18A8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F3F54251C586A00B18A8C /* AppDelegate.swift */; };
 		FA7F3F57251C586A00B18A8C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F3F55251C586A00B18A8C /* SceneDelegate.swift */; };
+		FAB1823B2522001700A2C3E2 /* RefreshScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB1823A2522001700A2C3E2 /* RefreshScrollView.swift */; };
+		FAB1823E2522076C00A2C3E2 /* NewsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB1823D2522076C00A2C3E2 /* NewsList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,11 +33,13 @@
 		FA7F3F43251C580C00B18A8C /* AsyncImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		FA7F3F44251C580C00B18A8C /* NewsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		FA7F3F46251C580C00B18A8C /* SideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
-		FA7F3F47251C580C00B18A8C /* NewDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDatePicker.swift; sourceTree = "<group>"; };
+		FA7F3F47251C580C00B18A8C /* NewsDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDatePicker.swift; sourceTree = "<group>"; };
 		FA7F3F4F251C581900B18A8C /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		FA7F3F50251C581A00B18A8C /* NewsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsResponse.swift; sourceTree = "<group>"; };
 		FA7F3F54251C586A00B18A8C /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA7F3F55251C586A00B18A8C /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		FAB1823A2522001700A2C3E2 /* RefreshScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RefreshScrollView.swift; path = NewsApp/Model/RefreshScrollView.swift; sourceTree = SOURCE_ROOT; };
+		FAB1823D2522076C00A2C3E2 /* NewsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,7 @@
 			children = (
 				FA7F3F4F251C581900B18A8C /* Data.swift */,
 				FA7F3F50251C581A00B18A8C /* NewsResponse.swift */,
+				FAB1823A2522001700A2C3E2 /* RefreshScrollView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -101,9 +106,10 @@
 			isa = PBXGroup;
 			children = (
 				FA7F3F33251C57B300B18A8C /* ContentView.swift */,
-				FA7F3F43251C580C00B18A8C /* AsyncImage.swift */,
+				FAB1823D2522076C00A2C3E2 /* NewsList.swift */,
 				FA7F3F44251C580C00B18A8C /* NewsCell.swift */,
-				FA7F3F47251C580C00B18A8C /* NewDatePicker.swift */,
+				FA7F3F43251C580C00B18A8C /* AsyncImage.swift */,
+				FA7F3F47251C580C00B18A8C /* NewsDatePicker.swift */,
 				FA7F3F46251C580C00B18A8C /* SideMenu.swift */,
 			);
 			path = View;
@@ -136,7 +142,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1170;
-				LastUpgradeCheck = 1170;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Alexey Orekhov";
 				TargetAttributes = {
 					FA7F3F2B251C57B300B18A8C = {
@@ -184,11 +190,13 @@
 				FA7F3F51251C581A00B18A8C /* Data.swift in Sources */,
 				FA7F3F49251C580C00B18A8C /* AsyncImage.swift in Sources */,
 				FA7F3F4C251C580C00B18A8C /* SideMenu.swift in Sources */,
-				FA7F3F4D251C580C00B18A8C /* NewDatePicker.swift in Sources */,
+				FAB1823E2522076C00A2C3E2 /* NewsList.swift in Sources */,
+				FA7F3F4D251C580C00B18A8C /* NewsDatePicker.swift in Sources */,
 				FA7F3F57251C586A00B18A8C /* SceneDelegate.swift in Sources */,
 				FA7F3F52251C581A00B18A8C /* NewsResponse.swift in Sources */,
 				FA7F3F34251C57B300B18A8C /* ContentView.swift in Sources */,
 				FA7F3F4A251C580C00B18A8C /* NewsCell.swift in Sources */,
+				FAB1823B2522001700A2C3E2 /* RefreshScrollView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,6 +240,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -292,6 +301,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
