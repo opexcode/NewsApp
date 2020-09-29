@@ -44,10 +44,10 @@ class NewsContent: ObservableObject {
     @Published var newsResponse: NewsResponse?
     
     init() {
-        load()
+        newsData()
     }
     
-    func load() {
+    func newsData() {
         guard let url = URL(string: "https://api.sakh.com/android/ghsJKds78dfsdg/news/list") else { return }
         var request = URLRequest(url: url)
         request.setValue("iOSApp", forHTTPHeaderField: "User-Agent")

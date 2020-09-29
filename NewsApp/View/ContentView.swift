@@ -13,8 +13,6 @@ struct ContentView: View {
     @State private var showPicker = false
     @State var showMenu = false
     
-    @ObservedObject var fetch = NewsContent()
-    
     let appColor = Color(red: 255/255, green: 111/255, blue: 64/255)
     
     var body: some View {
@@ -35,12 +33,12 @@ struct ContentView: View {
             ZStack {
                 NavigationView {
 					VStack(alignment: .leading) {
-						HStack(alignment: .center) {
-							Text("Все новости")
-								.font(.system(size: 22, weight: .bold))
-								.padding()
-								.frame(height: 32)
-							}
+						
+						Text("Все новости")
+							.font(.system(size: 22, weight: .bold))
+							.padding()
+							.frame(height: 32)
+							
 						Divider()
 						
 						RefreshScrollView(width: geometry.size.width, height: geometry.size.height)
@@ -80,8 +78,7 @@ struct ContentView: View {
                         trailing:
                             HStack {
                                 Button(action: {
-                                    // Обновляем данные
-//									fetch.load()
+									// TODO
                                 })
                                 {
                                     Image(systemName: "ellipsis")
@@ -92,7 +89,7 @@ struct ContentView: View {
                     )
                 }
                 .colorMultiply(self.showPicker ? .gray : .white)
-                .environmentObject(self.fetch)//
+//                .environmentObject(self.fetch)//
                 .gesture(drag)
                 .onAppear {
                 }

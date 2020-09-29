@@ -32,22 +32,22 @@ struct RefreshScrollView: UIViewRepresentable {
 	func updateUIView(_ uiView: UIScrollView, context: Context) {}
 	
 	func makeCoordinator() -> Coordinator {
-		Coordinator(self, fetch: fetch) // TODO
+		Coordinator(self, refresh: fetch) // TODO
 	}
 	
 	class Coordinator: NSObject {
 		var refreshScrollView: RefreshScrollView
-		var fetch: NewsContent // TODO
+		var fetch: NewsContent 
 		
-		init(_ refreshScrollView: RefreshScrollView, fetch: NewsContent) {
+		init(_ refreshScrollView: RefreshScrollView, refresh: NewsContent) {
 			self.refreshScrollView = refreshScrollView
-			self.fetch = fetch
+			self.fetch = refresh
 		}
 		
 		@objc func handleRefreshControl(sender: UIRefreshControl) {
 			sender.endRefreshing()
 			// RELOAD data
-			fetch.load()
+			fetch.newsData()
 		}
 	}
 }
