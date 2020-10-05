@@ -65,9 +65,8 @@ struct ContentView: View {
                 
                 // Новости по дате
                 NewsDatePicker(showPicker: $showPicker, fetch: fetch)
-                    .offset(y: self.showPicker ? (g.size.height / 3) + 10 : g.size.height)
+                    .offset(y: self.showPicker ? (g.size.height / 3) : g.size.height)
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: g.size.height / 3)
-//                    .environmentObject(fetch)
                 
                 // Боковое меню
                 SideMenu()

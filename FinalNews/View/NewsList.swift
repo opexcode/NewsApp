@@ -22,31 +22,34 @@ struct NewsList: View {
                 
                 Divider()
                     .frame(height: 1)
-     
                 
                 List(0..<fetch.contentList.count, id: \.self) { i in
-                    // TODO func
-                    // Подгружаем новости на следующую дату
                     if i == fetch.contentList.count - 1 {
+                        // Подгружаем новости на следующую дату
                         NewsCell(news: fetch.contentList[i])
                             .onAppear() {
                                 if !onAppear {
                                     print("Load news")
                                     self.onAppear = true
+                                    
                                     fetch.urlPath = news.next_date
                                     fetch.getNews()
                                 } else {
                                     self.onAppear = false
                                 }
                             }
+                        
+                        
                     } else {
                         NewsCell(news: fetch.contentList[i])
                     }
-                }.padding(.top, -8)
+                }
+                .padding(.top, -8)
             }
         }
     }
 }
+
 
 
 struct DateLabel: View {
