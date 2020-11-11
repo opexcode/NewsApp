@@ -66,10 +66,11 @@ class ImageCache {
 
 
 extension ImageCache {
-	private static var imageCache = ImageCache()
-	static func getImageCache() -> ImageCache {
-		return imageCache
-	}
+    private static var imageCache = ImageCache()
+	
+    static func getImageCache() -> ImageCache {
+	return imageCache
+    }
 }
 
 
@@ -77,16 +78,16 @@ extension ImageCache {
 class NewsContent: ObservableObject {
     @Published var newsLabel = "Все новости"
     @Published var newsResponse: NewsResponse?
-	@Published var contentList = [Content]()
-	
-	var urlPath = ""
+    @Published var contentList = [Content]()
+
+    var urlPath = ""
     
     init() {
-		getNews()
+	getNews()
     }
     
     func getNews() {
-		guard let url = URL(string: "https://api.sakh.com/android/ghsJKds78dfsdg/news/list/" + urlPath) else { return }
+	guard let url = URL(string: "https://api.sakh.com/android/ghsJKds78dfsdg/news/list/" + urlPath) else { return }
         var request = URLRequest(url: url)
         request.setValue("iOSApp", forHTTPHeaderField: "User-Agent")
         request.setValue("guid=FEDF4350-0F26-4024-BBB7-BFD63B689031(iPhone)", forHTTPHeaderField: "Cookie")
@@ -109,11 +110,11 @@ class NewsContent: ObservableObject {
         }.resume()
     }
 	
-	func reloadNews() {
-		self.contentList.removeAll()
-		self.urlPath = ""
-		self.getNews()
-	}
+    func reloadNews() {
+	self.contentList.removeAll()
+	self.urlPath = ""
+	self.getNews()
+    }
     
 }
 
